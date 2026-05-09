@@ -20,6 +20,11 @@ public class ProductoService {
 
     public List<Producto> listar() {
         return new ArrayList<>(productos);
+        
     }
+        
+    public void eliminar(String nombre) {
+    productos.removeIf(p -> p.getNombre().equalsIgnoreCase(nombre));
+}
 }
 

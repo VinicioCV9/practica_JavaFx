@@ -21,6 +21,7 @@ public class Main extends Application {
     public void start(Stage stage) {
         TextField campo = new TextField();
         Button boton = new Button("Agregar");
+        Button eliminar = new Button("Eliminar");
         TextArea area = new TextArea();
         area.setEditable(false);
 
@@ -37,7 +38,16 @@ public class Main extends Application {
             }
         });
 
-        VBox layout = new VBox(10, campo, boton, area);
+        eliminar.setOnAction(e -> {
+            servicio.eliminar(campo.getText());
+            String texto = "";
+            for (Producto p : servicio.listar()) {
+                texto += p.getNombre() + "\n";
+            }
+            area.setText(texto);
+        });
+
+        VBox layout = new VBox(10, campo, boton, eliminar, area);
         Scene scene = new Scene(layout, 300, 200);
         stage.setScene(scene);
         stage.show();
@@ -45,5 +55,5 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         launch(args);
-}
+    }
 }
