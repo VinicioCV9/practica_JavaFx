@@ -10,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -53,7 +54,8 @@ public class Main extends Application {
             area.setText(p != null ? "Encontrado: " + p.getNombre() : "No encontrado");
         });
 
-        VBox layout = new VBox(10, campo, boton, eliminar, buscar, area);
+         HBox botones = new HBox(10, boton, eliminar, buscar);
+        VBox layout = new VBox(10, campo, botones, area);
         Scene scene = new Scene(layout, 300, 200);
         stage.setScene(scene);
         stage.show();
