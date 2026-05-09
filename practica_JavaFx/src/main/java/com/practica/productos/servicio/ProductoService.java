@@ -26,5 +26,11 @@ public class ProductoService {
     public void eliminar(String nombre) {
     productos.removeIf(p -> p.getNombre().equalsIgnoreCase(nombre));
 }
+    public Producto buscar(String nombre) {
+    for (Producto p : productos) {
+        if (p.getNombre().equalsIgnoreCase(nombre)) return p;
+    }
+    return null;
+}
 }
 

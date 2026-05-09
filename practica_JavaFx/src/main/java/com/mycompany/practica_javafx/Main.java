@@ -22,6 +22,7 @@ public class Main extends Application {
         TextField campo = new TextField();
         Button boton = new Button("Agregar");
         Button eliminar = new Button("Eliminar");
+        Button buscar = new Button("Buscar");
         TextArea area = new TextArea();
         area.setEditable(false);
 
@@ -47,7 +48,12 @@ public class Main extends Application {
             area.setText(texto);
         });
 
-        VBox layout = new VBox(10, campo, boton, eliminar, area);
+        buscar.setOnAction(e -> {
+            Producto p = servicio.buscar(campo.getText());
+            area.setText(p != null ? "Encontrado: " + p.getNombre() : "No encontrado");
+        });
+
+        VBox layout = new VBox(10, campo, boton, eliminar, buscar, area);
         Scene scene = new Scene(layout, 300, 200);
         stage.setScene(scene);
         stage.show();
